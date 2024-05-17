@@ -4,60 +4,60 @@ using namespace std;
 
 class Persona {
 public:
-    string name;
-    int age;
-    float salary;
+    string nombre;
+    int edad;
+    float salario;
 
-    Persona(string _name, int _age, float _salary, string _email)
-        : name(_name), age(_age), salary(_salary), email(_email) {}
+    Persona(string _nombre, int _edad, float _salario, string _correo)
+        : nombre(_nombre), edad(_edad), salario(_salario), correo(_correo) {}
     protected:
-        string email;
-        virtual void setemail(string _email)=0;
-        virtual string getEmail()=0;
+        string correo;
+        virtual void setCorreo(string _correo)=0;
+        virtual string getCorreo()=0;
 };
 
 class Empleado : protected Persona {
 public:
-    string department;
+    string departamento;
 
-    Empleado(string _name, int _age, float _salary, string _email,string _department)
-        : Persona(_name, _age, _salary, _email) {
-        department=_department;
+    Empleado(string _nombre, int _edad, float _salario, string _correo, string _departamento)
+        : Persona(_nombre, _edad, _salario, _correo) {
+        departamento = _departamento;
     }
-    void setemail(string _email)
+    void setCorreo(string _correo)
     {
-        email = _email;
+        correo = _correo;
     }
-    string getEmail()
+    string getCorreo()
     {
-        return email;
+        return correo;
     }
 };
 
 class Cliente : protected Persona {
 public:
-    string customer_id;
+    string id_cliente;
 
-    Cliente(string _name, int _age, float _salary, string _email,string _customer_id)
-        : Persona(_name, _age, _salary, _email) {
-            customer_id= _customer_id;
+    Cliente(string _nombre, int _edad, float _salario, string _correo, string _id_cliente)
+        : Persona(_nombre, _edad, _salario, _correo) {
+            id_cliente = _id_cliente;
     }
-    void setemail(string _email)
+    void setCorreo(string _correo)
     {
-        email = _email;
+        correo = _correo;
     }
-    string getEmail()
+    string getCorreo()
     {
-        return email;
+        return correo;
     }
 };
 
 int main() {
-    Empleado em("John Doe", 30, 5000.0, "johndoe@example.com","lol");
-    cout << "Empleado email: " << em.getEmail() << endl;
+    Empleado emp("John Doe", 30, 5000.0, "johndoe@example.com", "Ventas");
+    cout << "Correo del Empleado: " << emp.getCorreo() << endl;
 
-    Cliente cli("Jane Doe", 25, 60000, "janedoe@example.com","1234343");
-    cout << "Cliente email: " << cli.getEmail() << endl;
+    Cliente cli("Jane Doe", 25, 60000, "janedoe@example.com", "1234343");
+    cout << "Correo del Cliente: " << cli.getCorreo() << endl;
 
     return 0;
 }
